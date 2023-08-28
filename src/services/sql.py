@@ -23,8 +23,12 @@ class DataBase:
         with self.connect:
             return self.cursor.execute("""SELECT * FROM filials WHERE filials_id=(?)""", [filials_id]).fetchall()
 
-    async def update_label(self, label, user_id):
-        with self.connect:
-            return self.cursor.execute("""UPDATE users SET label=(?) WHERE user_id=(?)""",
-                                       [label, user_id])
 
+    async def update_opp(self, opp, user_id):
+        with self.connect:
+            return self.cursor.execute("""UPDATE users SET opp=(?) WHERE user_id=(?)""",
+                                       [opp, user_id])
+
+    async def get_opp(self, user_id):
+        with self.connect:
+            return self.cursor.execute("""SELECT opp FROM users WHERE user_id=(?)""", [user_id]).fetchall()
