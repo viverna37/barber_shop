@@ -15,7 +15,7 @@ import base64
 
 #methods
 cb = CallbackData('btn', 'type', 'product_id', 'categori_id', 'count')
-db = DataBase('piro_database.db')
+db = DataBase('barber.db')
 
 
 
