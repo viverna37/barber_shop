@@ -4,10 +4,10 @@ from aiogram.dispatcher.filters import Command
 from src.services.sql import DataBase
 from src.bot import bot, dp
 from aiogram.types import CallbackQuery
-
+from aiogram import types
 from aiogram.utils.callback_data import CallbackData
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
-
+from aiogram.dispatcher import FSMContext
 from aiogram import Bot
 
 import datetime
@@ -15,17 +15,20 @@ from datetime import datetime, timedelta
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-
+from src.states.user import User
 from src.keyboards.menu import menu
 db = DataBase('barber.db')
 cb = CallbackData('btn', 'type', 'id')
 sheduler = AsyncIOScheduler(timezone='Europe/Moscow')
 async def cron(bot: Bot):
     user_id = await db.get_userss()
-    datetime_str = await db.get_opp(user_id)
-    datetime_obj = datetime.strptime(datetime_str)
-    if datetime_obj == datetime.today().date():
-        await bot.send_message(user_id, 'С вашей последней стрижки прошло достаточно времени, пора бы подстричься')
+    for i in user_id:
+        datetime_str = await db.get_opp(f'{i[0]}')
+        datetime_str = str(datetime_str[0][0])
+        datetime_obj = datetime.strptime(datetime_str, '%Y-%m-%d')
+
+        if datetime_obj.date() == datetime.today().date():
+            await bot.send_message(i[0], f'С вашей последней стрижки прошло дочтаточно времени, пора бы подстричься')
 
 
 @dp.message_handler(content_types='photo')
@@ -77,7 +80,7 @@ async def review(call: CallbackQuery, callback_data: dict):
 @dp.callback_query_handler(lambda call: call.data == 'opp')
 async def a(callback: CallbackQuery):
     keyboards = InlineKeyboardMarkup(row_width=1).add(
-        InlineKeyboardButton(text='7 дней - "Стиль Брэд Пита"', callback_data='btn:opp:0'),
+        InlineKeyboardButton(text='7 дней - "Стиль Брэд Пита"', callback_data='btn:opp:7'),
         InlineKeyboardButton(text='14 дней - "Четверг рекомендует"', callback_data='btn:opp:14'),
         InlineKeyboardButton(text='21 день - "Обросб но еще терпимо"', callback_data='btn:opp:21'),
         InlineKeyboardButton(text='28 дней - "Face_id тебя не узнает"', callback_data='btn:opp:28'),
@@ -92,8 +95,68 @@ async def review(call: CallbackQuery, callback_data: dict):
     datetime_opp = datatime + timedelta(days=days)
     sheduler.add_job(cron, kwargs={'bot': bot},
                      trigger='interval',
-                     seconds=5)
+                     days=1)
     sheduler.start()
     await db.update_opp(datetime_opp, call.message.chat.id)
-
     await bot.send_message(call.message.chat.id, f'Хорошо, я напомню вам через {callback_data.get("id")} дней', reply_markup=menu.menu)
+
+@dp.callback_query_handler(lambda call: call.data == 'adres')
+async def a(callback: CallbackQuery):
+    items = await db.get_filials()
+    keyboard = InlineKeyboardMarkup()
+    for i in items:
+        keyboard.add(
+            InlineKeyboardButton(f'{i[2]}', url=f'{i[6]}')
+        )
+    await bot.send_message(callback.message.chat.id, 'Канал этого филиала👇',
+                           reply_markup=keyboard)
+    await callback.answer()
+
+@dp.callback_query_handler(lambda call: call.data == 'contacts')
+async def a(callback: CallbackQuery):
+    await bot.send_message(callback.message.chat.id, 'Наши контакты'
+                                                     '\n\n Номер телефона: +79677636976', reply_markup=InlineKeyboardMarkup(row_width=1).add(
+        InlineKeyboardButton('Vk', url='https://vk.com/4etvergnn'),
+        InlineKeyboardButton('Inst', url='https://goo.su/k4hp4V0')
+    ))
+
+@dp.callback_query_handler(lambda call: call.data == 'questions')
+async def a(callback: CallbackQuery, state: FSMContext):
+    await bot.send_message(callback.message.chat.id, 'Напишите ваш вопрос. Ответим быстрее чем барбер подстрижет двух людей⚡️'
+                                                     '\n\nДля того что-бы вернуться в главное меню нажмите "Назад"', reply_markup=menu.back)
+
+    await User.questions.set()
+    print(111)
+
+@dp.message_handler(content_types='text', state=User.questions)
+async def a(message: Message, state: FSMContext):
+    text = message.text
+    await bot.send_message(chat_id='-1001930660607', text='<b>Вопрос</b>'
+                                                          f'\n\n{text}'
+                                                          f'\n\nВопрос задал @{message.from_user.username}',
+                           parse_mode=types.ParseMode.HTML)
+    await bot.send_message(message.chat.id, 'Спасибо за вопрос, уже пишем на него ответ.'
+                                            '\n\nМы перенесли вас в главное меню', reply_markup=menu.menu)
+    await state.finish()
+
+@dp.callback_query_handler(lambda call: call.data == 'queue')
+async def a(callback: CallbackQuery):
+    items = await db.get_filials()
+    keyboard = InlineKeyboardMarkup()
+    for i in items:
+        keyboard.add(
+            InlineKeyboardButton(f'{i[2]}', url=f'{i[7]}')
+        )
+    await bot.send_message(callback.message.chat.id, 'Выберите филиал',
+                           reply_markup=keyboard)
+
+@dp.callback_query_handler(lambda call: call.data == 'about_we')
+async def a(callback: CallbackQuery):
+    await bot.send_photo(callback.message.chat.id, photo='AgACAgIAAxkBAAIBVmTsthaAmNvPd-viN9IuwGPwpttHAAJGzjEbwp9oSxmCbWP2IuYkAQADAgADcwADMAQ', caption='О НАС'
+                                                                     '\n\nПривет! Мы сеть барбершопов "Четверг" - территория мужского стиля.У нас крутая атмосфера и качество для тех, кто ценит свое время.'
+                                                                     '\n\n🗓График работы: Ежедневно с 10:00 до 21:00 '
+                                                                     '\n\n📝Работаем без записи '
+                                                                     '\n\n💰Стрижки от 200 рублей'
+                                                                     '\n\n🤌 Шестая стрижка бесплатно '
+                                                                     '\n\n⏱ Время стрижки 30 минут'
+                                                                     '\n\n☎️ +7 (967)-763-69-76')

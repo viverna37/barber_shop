@@ -17,7 +17,7 @@ class DataBase:
 
     async def get_userss(self):
         with self.connect:
-            return self.cursor.execute("""SELECT user_id FROM users""").fetchone()
+            return self.cursor.execute("""SELECT user_id FROM users""").fetchall()
 
     async def get_filials(self):
         with self.connect:
@@ -35,4 +35,4 @@ class DataBase:
 
     async def get_opp(self, user_id):
         with self.connect:
-            return self.cursor.execute("""SELECT opp FROM users WHERE user_id=(?)""", [user_id]).fetchall()
+            return self.cursor.execute("""SELECT opp FROM users WHERE user_id=(?)""", [user_id]).fetchmany()
