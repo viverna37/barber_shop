@@ -1,0 +1,1 @@
+from src.mess.p2pmess import MESSAGES

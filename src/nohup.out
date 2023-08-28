@@ -1,0 +1,512 @@
+Task exception was never retrieved
+future: <Task finished name='Task-377' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: ''")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 123, in plus
+    keyboard = await  qw(data, call.message.chat.id, count_in_cart_mb)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 81, in qw
+    count2 = int(count1)
+ValueError: invalid literal for int() with base 10: ''
+Task exception was never retrieved
+future: <Task finished name='Task-380' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 107, in plus
+    await call.message.edit_reply_markup(keyboard)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/types/message.py", line 3007, in edit_reply_markup
+    return await self.bot.edit_message_reply_markup(
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/bot/bot.py", line 3226, in edit_message_reply_markup
+    result = await self.request(api.Methods.EDIT_MESSAGE_REPLY_MARKUP, payload)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Bot start
+Traceback (most recent call last):
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 24, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/home/bot/piro_sahalin_bot/src/bot.py", line 15, in main
+    from handlers import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/__init__.py", line 1, in <module>
+    from .cart import dp
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 3, in <module>
+    from src.states.user import Machine, COUNT, Add_cart, edit_cart, add_categoty, update_category
+ModuleNotFoundError: No module named 'src'
+Task exception was never retrieved
+future: <Task finished name='Task-143' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-146' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-154' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-157' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-160' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-180' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '2,), (1'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '2,), (1'
+Task exception was never retrieved
+future: <Task finished name='Task-469' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: ''")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: ''
+Task exception was never retrieved
+future: <Task finished name='Task-524' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (7'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (7'
+Task exception was never retrieved
+future: <Task finished name='Task-543' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (8'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (8'
+Task exception was never retrieved
+future: <Task finished name='Task-547' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (8'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (8'
+Task exception was never retrieved
+future: <Task finished name='Task-596' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: ''")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: ''
+Task exception was never retrieved
+future: <Task finished name='Task-620' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (8'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (8'
+Task exception was never retrieved
+future: <Task finished name='Task-7' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (8'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (8'
+Task exception was never retrieved
+future: <Task finished name='Task-24' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 138, in wiev
+    await db.add_to_cart(count[0][0], call.message.chat.id, callback_data.get('product_id'))
+IndexError: list index out of range
+Task exception was never retrieved
+future: <Task finished name='Task-35' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '3,), (8'")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    all_price = int(all_price1) * int(count)
+ValueError: invalid literal for int() with base 10: '3,), (8'
+Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Dispatcher._process_polling_updates() done, defined at /home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("local variable 'all_price' referenced before assignment")>
+Traceback (most recent call last):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "/home/bot/.local/lib/python3.10/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "/home/bot/piro_sahalin_bot/src/handlers/cart.py", line 169, in start
+    print(type(all_price))
+UnboundLocalError: local variable 'all_price' referenced before assignment
