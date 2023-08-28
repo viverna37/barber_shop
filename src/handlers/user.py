@@ -5,7 +5,7 @@ from src.services.sql import DataBase
 from src.bot import bot, dp
 
 
-from src.keyboards.menu import keyboards
+from src.keyboards.menu import menu
 db = DataBase('barber.db')
 
 @dp.message_handler(Command('start'))
@@ -15,4 +15,5 @@ async def start(message: Message):
                                             f'\n\n Здесь приведут вашу голову в порядок💆'
                                             f'\n\nИспользуйте кнопки в меню ниже👇👇👇')
     await db.add_users(message.chat.id)
+    await message.reply("💈ОСНОВНОЕ МЕНЮ💈", reply_markup=menu.menu)
 

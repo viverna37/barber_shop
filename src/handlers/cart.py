@@ -9,7 +9,7 @@ from aiogram import types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.types import Message
 
-from src.keyboards.menu import keyboards
+from src.keyboards.menu import menu
 
 import base64
 
