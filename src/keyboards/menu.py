@@ -15,3 +15,4 @@ class menu:
         InlineKeyboardButton(text='Посмотреть очередь', callback_data='queue'),
         InlineKeyboardButton(text='О нас 🙋‍♂️', callback_data='about_we')
     )
+

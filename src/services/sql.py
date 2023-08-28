@@ -15,10 +15,13 @@ class DataBase:
         with self.connect:
             return self.cursor.execute("""SELECT user_id FROM users WHERE user_id=(?)""", [user_id]).fetchone()
 
-
-    async def get_products(self, categori_id):
+    async def get_filials(self):
         with self.connect:
-            return self.cursor.execute("""SELECT * FROM products WHERE categori_id=(?)""", [categori_id]).fetchall()
+            return self.cursor.execute("""SELECT * FROM filials""").fetchall()
+
+    async def get_info_filials(self, filials_id):
+        with self.connect:
+            return self.cursor.execute("""SELECT * FROM filials WHERE filials_id=(?)""", [filials_id]).fetchall()
 
     async def update_label(self, label, user_id):
         with self.connect:

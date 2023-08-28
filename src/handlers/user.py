@@ -5,9 +5,17 @@ from src.services.sql import DataBase
 from src.bot import bot, dp
 from aiogram.types import CallbackQuery
 
+from aiogram.utils.callback_data import CallbackData
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+
+
 from src.keyboards.menu import menu
 db = DataBase('barber.db')
+cb = CallbackData('btn', 'type', 'id')
 
+@dp.message_handler(content_types='photo')
+async def photo(message: Message):
+    print(message.photo[0].file_id)
 @dp.message_handler(Command('start'))
 async def start(message: Message):
     await bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}👋'
@@ -20,5 +28,33 @@ async def start(message: Message):
 
 @dp.callback_query_handler(lambda call: call.data == 'action')
 async def a(callback: CallbackQuery):
-    await bot.send_photo(callback.message.chat.id, photo='')
+    await bot.send_photo(callback.message.chat.id, photo='AgACAgIAAxkBAAPTZOyVCv4ugXh5_nNNR93ncQw7PWYAAkfOMRvCn2hLOPVLrx3k9scBAAMCAANzAAMwBA')
+    await callback.answer()
+@dp.callback_query_handler(lambda call: call.data == 'price')
+async def a(callback: CallbackQuery):
+    await bot.send_photo(callback.message.chat.id, photo='AgACAgIAAxkBAAPTZOyVCv4ugXh5_nNNR93ncQw7PWYAAkfOMRvCn2hLOPVLrx3k9scBAAMCAANzAAMwBA')
+    await callback.answer()
 
+@dp.callback_query_handler(lambda call: call.data == 'review')
+async def a(callback: CallbackQuery):
+    items = await db.get_filials()
+    keyboard = InlineKeyboardMarkup()
+    for i in items:
+        keyboard.add(
+            InlineKeyboardButton(f'{i[2]}', callback_data=f'btn:review:{i[1]}')
+        )
+    await bot.send_message(callback.message.chat.id, 'Выберите филиал в котором хотите оставить отзыв', reply_markup=keyboard)
+    await callback.answer()
+
+@dp.callback_query_handler(cb.filter(type='review'))
+async def review(call: CallbackQuery, callback_data: dict):
+    keyboard = InlineKeyboardMarkup()
+    items = await db.get_info_filials(callback_data.get('id'))
+    for i in items:
+        keyboard.add(
+            InlineKeyboardButton(f'Yandex карты', url=f'{i[3]}'),
+            InlineKeyboardButton(f'Google карты', url=f'{i[4]}'),
+            InlineKeyboardButton(f'2ГИС карты', url=f'{i[5]}')
+        )
+    await bot.send_message(call.message.chat.id, 'Вот отзывы данного филлиала', reply_markup=keyboard)
+    await call.answer()
