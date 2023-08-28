@@ -15,6 +15,10 @@ class DataBase:
         with self.connect:
             return self.cursor.execute("""SELECT user_id FROM users WHERE user_id=(?)""", [user_id]).fetchone()
 
+    async def get_userss(self):
+        with self.connect:
+            return self.cursor.execute("""SELECT user_id FROM users""").fetchone()
+
     async def get_filials(self):
         with self.connect:
             return self.cursor.execute("""SELECT * FROM filials""").fetchall()
