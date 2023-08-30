@@ -1,4 +1,3 @@
-
 from aiogram.types import Message
 from aiogram.dispatcher.filters import Command
 from src.services.sql import DataBase
@@ -37,12 +36,12 @@ async def photo(message: Message):
 @dp.message_handler(Command('start'))
 async def start(message: Message):
     await bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}👋'
-                                            f'\n\n Рыда вас приветствовать в нашем боте барбер-щопа "Четверг"'
+                                            f'\n\n Рады вас приветствовать в нашем боте барбер-шопа "Четверг"'
                                             f'\n\n Здесь приведут вашу голову в порядок💆'
                                             f'\n\nИспользуйте кнопки в меню ниже👇👇👇')
     if await db.get_users(message.chat.id) == None:
         await db.add_users(message.chat.id)
-    await message.reply("💈ОСНОВНОЕ МЕНЮ💈", reply_markup=menu.menu)
+    await bot.send_message(message.chat.id, "💈ОСНОВНОЕ МЕНЮ💈", reply_markup=menu.menu)
 
 @dp.callback_query_handler(lambda call: call.data == 'action')
 async def a(callback: CallbackQuery):
@@ -61,7 +60,7 @@ async def a(callback: CallbackQuery):
         keyboard.add(
             InlineKeyboardButton(f'{i[2]}', callback_data=f'btn:review:{i[1]}')
         )
-    await bot.send_message(callback.message.chat.id, 'Выберите филиал в котором хотите оставить отзыв', reply_markup=keyboard)
+    await bot.send_message(callback.message.chat.id, 'Выберите филиал, о котором хотите оставить отзыв', reply_markup=keyboard)
     await callback.answer()
 
 @dp.callback_query_handler(cb.filter(type='review'))
@@ -80,9 +79,9 @@ async def review(call: CallbackQuery, callback_data: dict):
 @dp.callback_query_handler(lambda call: call.data == 'opp')
 async def a(callback: CallbackQuery):
     keyboards = InlineKeyboardMarkup(row_width=1).add(
-        InlineKeyboardButton(text='7 дней - "Стиль Брэд Пита"', callback_data='btn:opp:7'),
+        InlineKeyboardButton(text='7 дней - "Стиль Брэда Пита"', callback_data='btn:opp:7'),
         InlineKeyboardButton(text='14 дней - "Четверг рекомендует"', callback_data='btn:opp:14'),
-        InlineKeyboardButton(text='21 день - "Обросб но еще терпимо"', callback_data='btn:opp:21'),
+        InlineKeyboardButton(text='21 день - "Оброс, но еще терпимо"', callback_data='btn:opp:21'),
         InlineKeyboardButton(text='28 дней - "Face_id тебя не узнает"', callback_data='btn:opp:28'),
     )
     await bot.send_message(callback.message.chat.id, 'Через сколько мне вам напомнить?', reply_markup=keyboards)
@@ -121,12 +120,18 @@ async def a(callback: CallbackQuery):
     ))
 
 @dp.callback_query_handler(lambda call: call.data == 'questions')
-async def a(callback: CallbackQuery, state: FSMContext):
+async def a(callback: CallbackQuery):
     await bot.send_message(callback.message.chat.id, 'Напишите ваш вопрос. Ответим быстрее чем барбер подстрижет двух людей⚡️'
-                                                     '\n\nДля того что-бы вернуться в главное меню нажмите "Назад"', reply_markup=menu.back)
+                                                     '\n\nЧтобы вернуться в главное меню нажмите "Назад"', reply_markup=menu.back)
 
     await User.questions.set()
-    print(111)
+
+@dp.message_handler(text='Назад', state=User.questions)
+async def a(message: Message, state: FSMContext):
+    await bot.send_message(message.chat.id, ''
+                                            '\n\nМы перенесли вас в главное меню', reply_markup=menu.menu)
+    await state.finish()
+
 
 @dp.message_handler(content_types='text', state=User.questions)
 async def a(message: Message, state: FSMContext):
@@ -152,9 +157,9 @@ async def a(callback: CallbackQuery):
 
 @dp.callback_query_handler(lambda call: call.data == 'about_we')
 async def a(callback: CallbackQuery):
-    await bot.send_photo(callback.message.chat.id, photo='AgACAgIAAxkBAAIBVmTsthaAmNvPd-viN9IuwGPwpttHAAJGzjEbwp9oSxmCbWP2IuYkAQADAgADcwADMAQ', caption='О НАС'
-                                                                     '\n\nПривет! Мы сеть барбершопов "Четверг" - территория мужского стиля.У нас крутая атмосфера и качество для тех, кто ценит свое время.'
-                                                                     '\n\n🗓График работы: Ежедневно с 10:00 до 21:00 '
+    await bot.send_photo(callback.message.chat.id, photo='AgACAgIAAxkBAAIBVmTsthaAmNvPd-viN9IuwGPwpttHAAJGzjEbwp9oSxmCbWP2IuYkAQADAgADcwADMAQ', caption=''
+                                                                     '\n\nПривет! Мы сеть барбершопов "Четверг" - территория мужского стиля. У нас крутая атмосфера и качество для тех, кто ценит свое время.'
+                                                                     '\n\n🗓Стрижем без записи с 10:00 до 21:00 '
                                                                      '\n\n📝Работаем без записи '
                                                                      '\n\n💰Стрижки от 200 рублей'
                                                                      '\n\n🤌 Шестая стрижка бесплатно '
