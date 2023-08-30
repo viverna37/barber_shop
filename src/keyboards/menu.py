@@ -1,8 +1,8 @@
-
+from dataclasses import dataclass
 
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
-
+@dataclass
 class menu:
     menu = InlineKeyboardMarkup(row_width=1).add(
         InlineKeyboardButton(text='Акции🏷️', callback_data='action'),
@@ -12,7 +12,8 @@ class menu:
         InlineKeyboardButton(text='Наш адрес🚩', callback_data='adres'),
         InlineKeyboardButton(text='Контакты 📞', callback_data='contacts'),
         InlineKeyboardButton(text='Задать вопрос❓', callback_data='questions'),
-        InlineKeyboardButton(text='🧍‍♀️Посмотреть очередь ️🧍‍♂️', callback_data='queue'),
+        # InlineKeyboardButton(text='Посмотреть очередь   11111111111🧍‍♂️', callback_data='queue'),
+        InlineKeyboardButton(text='Посмотреть очередь🧍‍♂️', callback_data='queue'),
         InlineKeyboardButton(text='О нас 🙋‍♂️', callback_data='about_we')
     )
 
