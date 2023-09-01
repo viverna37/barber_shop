@@ -12,7 +12,7 @@ class menu:
         InlineKeyboardButton(text='Наш адрес🚩', callback_data='adres'),
         InlineKeyboardButton(text='Контакты 📞', callback_data='contacts'),
         InlineKeyboardButton(text='Задать вопрос❓', callback_data='questions'),
-        InlineKeyboardButton(text='🧍‍♀️Посмотреть очеред️🧍‍♂️', callback_data='queue'),
+        InlineKeyboardButton(text='🧍‍♀️Посмотреть очередь ️🧍‍♂️', callback_data='queue'),
         InlineKeyboardButton(text='О нас 🙋‍♂️', callback_data='about_we')
     )
 

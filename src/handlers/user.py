@@ -36,7 +36,7 @@ async def photo(message: Message):
 @dp.message_handler(Command('start'))
 async def start(message: Message):
     await bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}👋'
-                                            f'\n\n Рады вас приветствовать в нашем боте барбер-шопа "Четверг"'
+                                            f'\n\n Рады Вас приветствовать в нашем боте барбершоп "Четверг"'
                                             f'\n\n Здесь приведут вашу голову в порядок💆'
                                             f'\n\nИспользуйте кнопки в меню ниже👇👇👇')
     if await db.get_users(message.chat.id) == None:
@@ -144,16 +144,16 @@ async def a(message: Message, state: FSMContext):
                                             '\n\nМы перенесли вас в главное меню', reply_markup=menu.menu)
     await state.finish()
 
-# @dp.callback_query_handler(lambda call: call.data == 'queue')
-# async def a(callback: CallbackQuery):
-#     items = await db.get_filials()
-#     keyboard = InlineKeyboardMarkup()
-#     for i in items:
-#         keyboard.add(
-#             InlineKeyboardButton(f'{i[2]}', url=f'{i[7]}')
-#         )
-#     await bot.send_message(callback.message.chat.id, 'Выберите филиал',
-#                            reply_markup=keyboard)
+@dp.callback_query_handler(lambda call: call.data == 'queue')
+async def a(callback: CallbackQuery):
+    items = await db.get_filials()
+    keyboard = InlineKeyboardMarkup()
+    for i in items:
+        keyboard.add(
+            InlineKeyboardButton(f'{i[2]}', url=f'{i[7]}')
+        )
+    await bot.send_message(callback.message.chat.id, 'Выберите филиал',
+                           reply_markup=keyboard)
 
 @dp.callback_query_handler(lambda call: call.data == 'about_we')
 async def a(callback: CallbackQuery):
