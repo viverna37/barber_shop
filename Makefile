@@ -1,5 +1,5 @@
 REPO = 'git@github.com:viverna37/barber_shop.git'
-BRANCH = master
+BRANCH = developer
 
 
 
